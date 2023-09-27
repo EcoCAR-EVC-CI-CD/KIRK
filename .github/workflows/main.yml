@@ -1,0 +1,35 @@
+name: MATLAB Build
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+jobs:
+  run-tests:
+    name: Run Simulink Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Setup MATLAB
+        uses: matlab-actions/setup-matlab@v1
+        with:
+          release: R2023a
+      - name: Run Tests
+        uses: matlab-actions/run-build@v1
+        with:
+          tasks: test
+  run-checks:
+    name: Run Model Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Setup MATLAB
+        uses: matlab-actions/setup-matlab@v1
+        with:
+          release: R2023a
+      - name: Run Checks
+        uses: matlab-actions/run-build@v1
+        with:
+          tasks: check
