@@ -1,20 +1,25 @@
 name: MATLAB Build
 on:
+  # Trigger only on PRs targeting main or develop
   pull_request:
     branches:
       - main
       - develop
 jobs:
   run-tests:
+    # Job to run the Simulink tests
     name: Run Simulink Tests
     runs-on: ubuntu-matlab
     steps:
-      - name: Check out repository
+        # Checkout the repo with Git clone
+      - name: Checkout repository
         uses: actions/checkout@v3
+        # Install MATLAB + Simulink 2023a
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
         with:
           release: R2023a
+        # Run the "test" task from the buildfile
       - name: Run Tests
         uses: matlab-actions/run-build@v1
         with:
@@ -23,12 +28,15 @@ jobs:
     name: Run Model Checks
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+        # Checkout the repo with Git clone
+      - name: Checkout repository
         uses: actions/checkout@v3
+        # Install MATLAB + Simulink 2023a
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
         with:
           release: R2023a
+        # Run the "check" task from the buildfile
       - name: Run Checks
         uses: matlab-actions/run-build@v1
         with:
