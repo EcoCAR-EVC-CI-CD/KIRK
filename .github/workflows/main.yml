@@ -7,7 +7,7 @@ on:
 jobs:
   run-tests:
     name: Run Simulink Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-matlab
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
