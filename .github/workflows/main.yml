@@ -9,7 +9,7 @@ jobs:
   run-tests:
     # Job to run the Simulink tests
     name: Run Simulink Tests
-    runs-on: ubuntu-matlab
+    runs-on: ubuntu-4
     steps:
         # Checkout the repo with Git clone
       - name: Checkout repository
@@ -26,7 +26,7 @@ jobs:
           tasks: test
   run-checks:
     name: Run Model Checks
-    runs-on: ubuntu-matlab
+    runs-on: ubuntu-4
     steps:
         # Checkout the repo with Git clone
       - name: Checkout repository
